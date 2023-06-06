@@ -1,0 +1,184 @@
+@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss'; //css reset
+@import '../node_modules/bootstrap/scss/bootstrap-grid.scss'; //格線系統
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap'); //Open Sans-800
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;900&display=swap'); //Noto Sans Traditional Chinese
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"); //bootstrap-icons
+
+$dark:#000;
+$primary-color:#FF7A00;
+$primary-light:#FF9900;
+$secondary:#3586FF;
+$secondary-light:#0065FC;
+
+.open-snas-extrabold{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+}
+.noto-sans-black{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 900;
+}
+.noto-sans-light{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+}
+
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+//導覽列.scss
+.brand{
+    font-size: 24px;
+}
+
+//導覽列
+.navbar{
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+background: rgba(white, 0.3);
+backdrop-filter: blur(3px); //毛玻璃特效
+z-index: 1000;
+    .navbar-list{
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .list-item{
+        padding:1rem; //16px
+        display: inline-block;
+        text-decoration: none;
+        color: black;
+        &:hover, &.active{
+            color:orange;
+        }
+    }
+}
+
+.section{
+    padding: 100px 0;
+    background-color: #ddd;
+}
+
+.person-image {
+    padding-top: 30px;
+}
+
+//Button
+.btn-primary{
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 100px;
+    width: 50%;
+    background-image: linear-gradient(to bottom, $primary-color,$primary-light);
+    color:#FFF;
+    transition: box-shadow 0.15s;
+    &:hover,&.active{
+        //background-image: linear-gradient(to bottom, $primary-color,$primary-light);
+         background-image: linear-gradient(to bottom, darken($primary-color,3%),darken($primary-light,3%)); //將色票直接調整深度
+        box-shadow: $primary-color 2px 5px 5px;
+    }
+}
+
+// 模擬打字特效
+.type-blink{
+    width: 3px;
+    height: 68px;
+    background-image: linear-gradient(to bottom,#3586ff,rgba(0,101,252,0.5));
+    position: absolute;
+    right: -10px;
+    top: 55%;
+    transform: translateY(-50%);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    50% {
+        opacity: 0;
+    }
+}
+
+.social-link{
+    display: inline-block;
+    padding: 0 4px;
+    margin-right: 6px;
+    text-decoration: none;
+    color: #555;
+}
+
+//Utilities.scss
+.d-inline-block {
+    display: inline-block
+}
+
+.display-h1 {
+    font-size: 45px;
+    line-height: 1.2
+}
+
+.text-dark-gray {
+    color: #555
+}
+
+.d-flex {
+    display: flex
+}
+
+.align-center {
+    align-items: center
+}
+
+.justify-content-center {
+    justify-content: center
+}
+
+.justify-content-between {
+    justify-content: space-between
+}
+
+.p-relative {
+    position: relative
+}
+
+.p-absolute {
+    position: absolute
+}
+
+.pt-20 {
+    padding-top: 20px
+}
+
+.pb-20 {
+    padding-bottom: 20px
+}
+
+.mb-0 {
+    margin-bottom: 0
+}
+
+.mb-24 {
+    margin-bottom: 24px
+}
+
+.px-60 {
+    padding-left: 60px;
+    padding-right: 60px
+}
+
+.z-index--1 {
+    z-index: -1
+}

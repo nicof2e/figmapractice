@@ -1,0 +1,133 @@
+<!-- 1. scss > sass 2.純手刻 css reset 3.Bootstrap > 格線系統-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/all.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="brand open-snas-extrabold">PORTFOLIO.</div>
+                <ul class="navbar-list">
+                    <li><a href="" class="list-item">About</a></li>
+                    <li><a href="" class="list-item">Skill</a></li>
+                    <li><a href="" class="list-item">Contant</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="container p-relative">
+            <img src="./images/header-top-decoration.png" alt="" class="p-absolute pos-3d" data-layer="30" style="left: 30px;
+            top: -10px;">
+            <img src="./images/header-main-decoration.png" alt="" class="p-absolute z-index--1 pos-3d" data-layer="15"
+            style="left: 340px; top: 340px;">
+            <div class="row">
+                <div class="col-md-5 d-flex align-items-center">
+                    <div class="header-content">
+                        <h2>哈囉</h2>
+                        <h1 class="display-h1 noto-sans-light mb-24 d-inline-block p-relative">我是一名
+                            <span id="typing" class="noto-sans-black typing-effect">
+                                前端工程師
+                            </span>
+                            <span class="type-blink"></span>
+                        </h1>
+                        <p class="noto-sans-light">我熱愛挑戰自己，並不斷追求個人成長和學習。我的經驗涵蓋了設計與前端，並且我喜歡在這些領域中不斷創新和探索。我擁有良好的溝通和團隊合作能力，並能夠在壓力下保持高效率。</p>
+                        <div class="pt-20 pb-20">
+                            <a href="#" class="social-link">
+                                <i class="bi bi-github"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                        </div>
+                        <button type="button" class="btn-primary">認識我</button>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-1">
+                    <img src="./images/person-image.png" class="person-image pos-3d" data-layer="6" data-invert="1" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+
+    </section>
+    <!--圖片位移特效-->
+    <script>
+            document.addEventListener('mousemove', (e) =>{
+                // 傳入滑鼠位置
+                document.querySelectorAll('.pos-3d').forEach((element) => {
+                    add3d(element, e);
+                });
+            });
+
+            function add3d(element, e){ // element => 滑鼠 e => 圖片
+                // Mouse position on the page
+                const m_x = e.pageX;
+                const m_y = e.pageY;
+
+                const w_w = window.innerWidth, //window width
+                w_h = window.innerHeight,
+                o_w = element.offsetWidth,
+                distance = (element.offsetWidth - w_w) / 2,
+                layer = Number(element.getAttribute('data-layer')),
+                invert = Number(element.getAttribute('data-invert'));
+
+                // 物件在頁面上的位置
+                const o_x = w_w / 2;
+                const o_y = w_h / 2;
+
+                // 兩者的距離差
+                let w_x = m_x - o_x;
+                let w_y = m_y - o_y;
+
+                //距離相乘後開平方
+                const w_wSqrt = Math.sqrt(w_w / 2);
+                const d = distance / w_wSqrt / layer;
+
+                //距離計算
+                let s_x = Math.sqrt(Math.abs(w_x));
+                if(w_x <0 ){
+                    s_x = -s_x;
+                }
+
+                let d_x = s_x * d;
+                //加入樣式
+                element.style.transform = `translateX(${invert ? d_x : -d_x}px)`;
+            }
+    </script>
+    
+    <!--打字特效-->
+    <script>
+    const texts = ['前端工程師'];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+
+    (function type() {
+    if (count === texts.length) {
+        count = 0;
+    }
+    currentText = texts[count];
+    letter = currentText.slice(0, ++index);
+
+    document.getElementById('typing').textContent = letter;
+    if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+        setTimeout(type, 3000);
+    } else {
+        setTimeout(type, 150);
+    }
+    })();
+    
+    </script>
+</body>
+</html>
